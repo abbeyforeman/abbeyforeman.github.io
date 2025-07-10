@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Name | Portfolio</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: monospace;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+          font-size: 0.8em;
+        }
+
+        .content-wrapper {
+            display: flex;
+            flex: 1;
+        }
+
+/* Sidebar */
+.sidebar {
+    padding: 20px;
+    overflow-y: auto;
+    height: 100vh;  /* Set a fixed height so content can overflow and scroll */
+}
+
+.sidebar h1 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    font-weight: normal;
+}
+
+.sidebar a {
+    color: black;
+}
+
+.sidebar p {
+    text-decoration: underline;
+    background-color: #f9ffd9;
+}   
+      #title {
+        font-size: 0.9em;
+      }
+      
+      #title a {
+        text-decoration: none;
+      }
+
+        .project-link {
+            display: block;
+            text-decoration: none;
+            padding: 5px 0;
+            cursor: pointer;
+        }
+
+        .project-link:hover {
+            background: #edff87;
+          font-style: italic;
+        }
+
+        .project-link.active {
+            background: #f9ffd9;
+          font-style: italic;
+          font-size: 1.2em;
+        }
+
+/* Main Content */
+.main-content {
+    flex: 1;
+    overflow-y: auto;
+    position: relative;
+    background: #fff;
+    padding: 20px;
+}
+
+.project-container {
+    display: none;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding-top: 30px; /* Consistent top spacing for all projects */
+}
+
+.project-container.active {
+    display: block;
+}
+
+#welcome-message {
+    text-align: center;
+    position: absolute;
+    width: 100%;
+}
+
+        .project-container.active {
+            display: block;
+        }
+
+        .project-media {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .project-image {
+            max-width: 100%;
+            max-height: 80vh;
+            object-fit: contain;
+        }
+
+        .project-video {
+            max-width: 100%;
+        }
+
+        .project-info {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            font-size: 0.8em;
+        }
+
+        .project-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        /* Footer */
+        .footer {
+            width: 100%;
+            padding: 15px 20px;
+            text-align: center;
+          font-size: 0.5em;
+
+        }
+
+        .footer p {
+            margin: 0;
+        }
+
+        .footer a {
+
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .content-wrapper {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                width: 100%;
+                border-right: none;
+            }
+
+            .main-content {
+                min-height: calc(100vh - 200px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="content-wrapper">
+        <div class="sidebar">
+
+            <div id="title">
+             <a href="index.html"><pre>
+             
+    Hello my name is
+  
+           /\      .       .                    
+       _  / |     /       /                     
+      (  /  |  . /-.     /-.    .-..    .-.     
+       `/.__|_.'/   )   /   ) ./.-'_)  /        
+   .:' /    | .'`--'`-.'`--'`-(__.'(_.'         
+  (__.'     `-'                  ..-._)          
+   .-._.---'                                    
+  (_) /                                         
+     /--..-._.).--..-..  .-. .-.  .-.  .  .-.   
+    /   (   )/   ./.-'_)/   )   )(  |   )/   )  
+ .-/     `-'/    (__.''/   /   (  `-'-''/   (   
+(_/                             `-'          `- 
+
+                  nice to meet you.
+
+</pre></a>
+    </div>
+          <br>
+            
+          <p>
+            DIGITAL 
+          </p>
+            <a href="#mundanepedia" class="project-link" onclick="showProject('mundanepedia', this)">Mundanepedia</a>
+            <a href="#agoodhand" class="project-link" onclick="showProject('agoodhand', this)">A Good Hand</a>
+            <a href="#arborville" class="project-link" onclick="showProject('arborville', this)">Arborville</a>
+            <a href="#qolorquery" class="project-link" onclick="showProject('qolorquery', this)">Qolorquery</a>
+          <a href="#doublewoven" class="project-link" onclick="showProject('doublewoven', this)">A Conversation is Double Woven</a>
+          <a href="#abbeysdyelab" class="project-link" onclick="showProject('abbeysdyelab', this)">Abbey's Dye Lab</a>
+          <a href="#babyname" class="project-link" onclick="showProject('babyname', this)">Baby Name Generator</a>
+          <a href="#dressmeup" class="project-link" onclick="showProject('dressmeup', this)">Dress Me Up!</a>
+          <a href="#virtualbanchan" class="project-link" onclick="showProject('virtualbanchan', this)">Virtual Banchan</a>
+          <a href="#postage" class="project-link" onclick="showProject('postage', this)">Postage from Pyongyang</a>
+           <a href="#webpoems" class="project-link" onclick="showProject('webpoems', this)">Web Poetry</a>
+
+
+          
+          <p>
+            PHYSICAL
+          </p>
+            <a href="#woventouch" class="project-link" onclick="showProject('woventouch', this)">Woven Touch</a>
+            <a href="#knitgen" class="project-link" onclick="showProject('knitgen', this)">Knit Gen</a>
+            <a href="#knitputer" class="project-link" onclick="showProject('knitputer', this)">Knitputer</a>
+          <p>
+            WRITING
+          </p>
+            <a href="#project8" class="project-link" onclick="showProject('project8', this)">Cloud Formations</a>
+            <a href="#project9" class="project-link" onclick="showProject('project9', this)">Go Outside</a>
+            <a href="#project10" class="project-link" onclick="showProject('project10', this)">Colors Movie</a>  
+        <p>
+            EXTRA
+          </p>
+          <a href="bio" class="project-link" onclick="showProject('bio', this)">My bio</a>
+          <a href="https://www.instagram.com/_abbeyforeman/">My instagram</a><br>
+          <a href="mailto:abbeyforemana@gmail.com">Email me</a>
+        </div>
+      
+      
+
+        <div class="main-content">
+            <div id="welcome-message">
+          <pre>
+00GGCCCCLLLLLffffffffffffffffLLLCCCGCGLi  .i;i.11..;t: ;   : :  .              ...                                                                              
+GGCCCCLLLLLfffffftttttttttfffLLLCCCCCCL;   :ii.fi..;t..;   : ; ;tLLCCtti:::;.iiiiiii;:::.                                                                       
+CCCCCLLLLffffftftttttttttttfffLLLCCCCCt,  .,i;.t:..11 ,:  .,11G0GG8GCLLLft1111fttt11111i;;:,.                                                                   
+CLLLLLLffffftttttttttttttttfffLLLCCCCCi.  ,:;::t,..t; ,:  ,LG8@@8C00GCCLft1tttfLLfffft1i11iii;,.                                                                
+LLLLLffffftttttttttttttttttffffLLCCCCL;   ::;.;i..,t: :::@@0@@88@8G0GLLLLCfLLtfLLffffftftti1i;ii:.                                                              
+LLLfffffttttttttttttt11ttttffffLCCCLCf,   ,;; 1;..:t, ,8@@8@@@@@8@0000CLCCCfCLLCLLfLfffffttf111;ii:                                                             
+Lffffftttttt111t11111111tttffffLCCCLL1.   .;;.t:..;1 i@@@@@@@@@@8808G0GCLCCCthisCCGCffftfftttf111;ii,.                                                          
+ffffttttttt11111111111111tttfffLLCLCL;    :;,.t, .i1f@@@@@@@@@@88@800G0CLGCCCCGisCCCCCLfttffttf1tti;1:,                                                         
+fffftttttt111111111111111ttftffLLLLLf,   ,,:.:1, ,1C0@@@@@@@@@@@@@000G0LCLffffLCmeeeCCCCLfttttttttftii1.                                                        
+ffftttttt1111111111111111ttttffLLLLLt,   .:: ;;..,f@@@@@@@@@@@@@@880GCCLt111i11tfLLLLLLLCLffittttttft1ii;,                                                      
+ffttttt111111111i1i1111111tttffLLLLLCt   .:: 1: ,10@@@@@@@ @@@@@@880GCLtii;;::;;;it1fLLLLLLLf1ttttttf1t;.;.                                                     
+fttttt111111111ii111111111tttffLLfLf,1   .:, 1, ,G@@@@  @@ @@  @8000CLf1ii:::::,:,1;ffCLffLCLft1tttit11t,i;                                                     
+ttttt111111iiiiii1ii1i111ttttffLLfLt,   .,:..i. 18@@@@@  @ @  @880GGCffi;;::,,:,:,;:i1LfLtLLLCtt1t1t;11tf.1                                                     
+ttt1111111iiiiiii1ii1ii11ttttfffffLi.   .,, :i. t@@               @CLfti;::,,,,,:,::;1fLtftLLCLff1t1t;fttf::.                                                   
+ttt11111i1iiiiiiiiiiii111ttttffffff:    .,, i;  @@@@@@@@  @  @@880GCLLi;;,,,,,,,,,:;;i1LtftfLLLLff11i1iittt:,,                                                  
+tt111111iiiiiiiiiiiiiii11ttttffffft,     ,, 1, @@@@@@@@  @@@  @@8GGGGt;;:,,,,,,,,,,,::;Lf1ftfLCLLLft1 11;11ti,                                                  
+t111111iiiiiiiiiiiiii1i111tttffftf1.   ..,. i @@@@@@@@  @@@@@  @800Gft;,,,...,.,..,::,;Lf1f1tLCCLCLf  1i1;i1i1:                                                 
+tt111111iiiiiiiiiiiiiii1111ttffftf;    .,, .;@@@@@@@@@@@@@@@@@@@@88Cfi:,,,....,,...,,;;fLffffLCCLLCC   11t1tiiii.                                               
+t1111iiiiiiiiiiiiiiiiii1111ttfffft,    .,. ,@@@@@@@@@@@@@@@@@@@@@8800Gfi:,,.,.,,.,::1fLCCCCGCLLLLLC     ft1tt1ii;,                                              
+11111iiiiiiiiiiiiiiiiii1111ttttttt.    ... @@@@@@@@@@@@@@@@@@@80LCGff1t11;::,,,,,;1ttttttfLfL1tLLLLC   Lffffftfiii:                                             
+11111iiiiiiiiiiiiiiiiii1111tttttfi     ...0@@@@@@@@@@@@@@@@@@@@@80LL1111t1;:,,.,,,,;:;i:itfffLLLLLfLL GCLLfftffft;,i                                            
+1111i1iiiiiiiiiiiii;iiii111tttttt;     ..i@@@@@@@@@@@@@@@@@@@@8@@88G10i1tt;:,...,:::tLC800CfLfffLLLf;itLGCLLtiftt ;;:                                           
+11111iiiiiii;i;;;;;;iiiiii1ttttt1,     ..L@@@@@@@@@@@@@@@@@@@@@888LCLLC;fti:..  .,.tCL;008.,f1ti;i1C;ii1t1.iLttttii1i ,                                         
+111iiiiiiiiii;;;;;;;;iiiii11tt1t1.      @@@@@@@@@@@@@@@@@@80GGCfttt1111it1i:.    ..:::::,,.   ..,,,.,:.;f,C;ff1;;tii;                                           
+111iiiiiiii;;;;;;;i;iiiiii111t1ti.    G@@@@@@@@@@@@@@@@@@8@GLft1111iiiitt1;,.       ,:,,.              .1,GLL   .ttt;f                                          
+111iiiiiii;;;;;;;;;;;iiiii111t11:   :,G@@@@:@@@@@@@@@@@@8GLft1iiii1i;itft1;.          ....             :;Gf1:   .fifii                                          
+111iiiiii;;;;;;;;;;;;iiiii1111t1..  ,.@@@@@@f@@@@@@@@@@@8GLt1ii;;;;;;itfti,                           ,;C00 :   .tfL;i                                          
+11iiiiiiii;;;;;;;;;;;iiiii111i1i:    @@@@@@f@@@@@@@@@@@@0GLt1i;;;;;;;iLf1;,        ....               f80G  ;.  .tfLt                                           
+1111iiii;i;;;;;;;;;;;i;;ii11t1t:   .8@@@@C8@@@@@@@@@@@@@0GLf1ii;;::;iftt;,.        :,,.              L880G  1;t1 LLft                                           
+1111iiiiii;;;;;;;;;;;;iii1111t1;  iC@@@@@@@@@@@@@@@@@@@@GG0Lt1i;::::;tiit;,,.      :::,.            .88800LCGfC:LLLi                                            
+1111iiiii;;;;;;;;;;;;;;;ii111ti, ,@C@@@@@@@L@@@@@@@@@@@@GGC0ftii:::;i1LCLf1: ::;i,,..,,,.           08888G1 CGfCCLt1                                            
+1111iiiiii;;;;;;;;;;;;;;i111it;iC fL@@@@@1@@L@@@@@@@@@@@@GLGCC1i;;;iii111;,,,,        .,..         ,G88801  LCGGLtfi                                            
+11111iiii;;;;;;;;;;ii;;;i1ii11Gt G,@@@@@01@@@8@@@@@@@@@@@@0GCCL11iiiiiiii:.,:,.                    @G88@0  i0GGCfL ,                                            
+t1111iiii;;;;;;;;:;;;;;iii1i18f .LG@@@@@@@@@@@@@@@@@@@@@@@@8GGLftf1iiiii;;..,.                    @G0@@@80000GCfL i                                             
+t1111iiii;;i;;;;;;;;i;;ii1if8C1;@;t@@@8@;@@@@C@@@@f@@@@@@@@88GCLtftCii_hellooOOOooOoOo;.         @0C@@8880000GCCt,                                              
+t111iiiii;;i;;;;;;;;;;;iiiLGLf:@1@@@@@i@G@@@@f@@@@@@@@@@@@@@@00GCfLLt1tfftiii;;:..    .,,.     i@8G@08@88880CGCf                                                
+t1t11iiiii;;;;;;;;;;;;;110Lft;@.@@@@@@8@@CG@G@@@@@@@@@@@@@@@@@80GCCCLftfftt1i;;:,........     @@80G8888808G00GC;                                                
+t11111iii;;;;;;;;;;;;;itGLCtt@@@@@@@@@@@@@@@@@@@@@ @@@@@@@@8@@@@8GLfftt1ii;;:::,,,....... ..8@@@8GG8880GG888fft1                                                
+tt111iiiii;;;;;;;:;;iiiCfLfG@@@@@@@@@@@@@@@@@@ @@@  @@ @@@8@0@@@@00Lft1ii;;:,,.         .:@@@@@@8GG@  088  CfG11. .                                             
+t111iii1ii;;;;;;;:i;;;1LLL@8@@@@@@@@@@@@@@@@@@@       @@@@@800@@@@@8GLt1i;::,,...     ,1@@@@@@@00GG80C08880GfCtt:.    ,                                         
+       ,,,:    ,,11i;1Lff@8@@@@@@@@@@@@@@@@@@@@@@   @@@@@@@@0G0@@@@@@@8Ct1i;;,,....;0@@@@@@@@@800GG8GG08888FCCLtiC .:tf ...;:;,,. .                             
+  :                   ..@@8@@@@@@@@@@@@@@@@@@@@@  @  @@888@@8C@C@@@@@800Cfftt11tLG88@@@@@@@@@@000GG8        GLLL11tt.if11:;:::,,,:. ,, ,...                     
+,,..     .  ,.       .,0@8@8@@@@@@@@@@@@@@@@@@@ @@@@@ @@@8888808@@@@@@8CLft1iitfG0088@@@@@@@@@G80GC88      GGCLL  t:  :1Lt;1ii;i;::,:::,,,:;;;;;,               
+LCCCCLi;      ... ,, i@@@88@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@8@8@@@@@@@GCtf1t11LG8008@@@@@@@@@8G8GGG888LC000GCLGLLLLt1ftti1f1fitt11tt:;i1i;iii:;;i;;    
+i;;;:,;;;;i1;::iLLt@@@@@888@@@@@@@8@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@GCtt1ftLG8G0@@@@@88@@8808000C880LGGC000GCGf     GGttttfi1f1it1111tt;1;;;;;,;i  
+11i;::;;ii1;i;;::@@@@@@@@@8@@@@@@@@8@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@8Lt1tLCL0G88@@@8@888080G000GLG88fLCGt80CGCC0   L0GtftfGGCLLLLLti1fttiii;iftff
+t1i;:;;ii1t1ii1;@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@8@@@@@@@@@@@@8Lt1tLLLG88@@8008808@8GGGG00f0@GCCC0LG0GGLLG0GLCf1CLfCCfGCLLLCCCCLL11tttfLLCL
+          </pre>
+          </div>
+          
+<!--             mundanepedia -->
+            <div id="mundanepedia" class="project-container">
+                <div class="project-media">
+                    <img src="https://cdn.glitch.global/87e3857f-bf61-486b-9901-9e6623928f8f/Screenshot%202025-05-11%20at%201.25.02%E2%80%AFPM.png?v=1746984318010" class="project-image" />
+                </div>
+                <div class="project-info">
+                    <div class="project-title">Mundanepedia</div>
+                    <div class="project-description">
+                        2025<br>
+                        Exploring the fear of AI replacement and the humanity of the mundane. Created using Claude, I've generated an entire universe within the vacuum of the daily office setting where staplers and ballpoint pens fall in love.<br>
+                        Created as a final for <a href="https://www.griffinsmithart.com/">Griffin Smith's</a> TEXT TRANSFORMED at RISD<br>
+                        <a href="https://mundanepedia.glitch.me/">mundanepedia.glitch.me</a>
+                    </div>
+                </div>
+            </div>
+          
+                      <!-- a good hand -->
+            <div id="agoodhand" class="project-container">
+                <div class="project-media">
+                    <img src="https://cdn.glitch.global/87e3857f-bf61-486b-9901-9e6623928f8f/Screenshot%202025-05-11%20at%201.26.39%E2%80%AFPM.png?v=1746984405047" class="project-image" />
+                </div>
+                <div class="project-info">
+                    <div class="project-title">A Good Hand</div>
+                    <div class="project-description">
+                        2025<br>
+                        "Generative story, rooted in the whimsy of Mad Libs and the unpredictability of friendly conversation, disrupts mundanity with serendipity, pouring out infinitely from a sentimental narrative. With over 4 trillion ways of composing and experiencing this story, we can only cherish what we are given and imagine, inconceivably, how many other ways it all could have played out."<br>
+                        featured as a web-exclusive in <a href="https://volume-1.org/">Volume-1</a><br>
+                      <a href="https://a-good-hand.glitch.me/">a-good-hand.glitch.me</a>
+                    </div>
+                </div>
+            </div>
+          
+                      <!-- arborville -->
+            <div id="arborville" class="project-container">
+                <div class="project-media">
+                    <img src="https://cdn.glitch.global/87e3857f-bf61-486b-9901-9e6623928f8f/Screenshot%202025-05-12%20at%2010.49.58%E2%80%AFAM.png?v=1747061403056" class="project-image" />
+                </div>
+                <div class="project-info">
+                    <div class="project-title">Arborville</div>
+                    <div class="project-description">
+                        2024<br>
+                      When you visit, find the town hall and leave a message. <br>
+                        <a href="https://arborville.glitch.me/">arborville.glitch.me</a>
+                    </div>
+                </div>
+            </div>
+          
+                                <!-- doubleweave -->
+            <div id="doublewoven" class="project-container">
+                <div class="project-media">
+                    <img src="https://cdn.glitch.global/87e3857f-bf61-486b-9901-9e6623928f8f/Screenshot%202025-05-11%20at%201.47.31%E2%80%AFPM.png?v=1746985655919" class="project-image" />
+                </div>
+                <div class="project-info">
+                    <div class="project-title">A Conversation is Double Woven</div>
+                    <div class="project-description">
+                        2024<br>
+                      Connecting memory and touch, I wanted to create an interactive story that transform your trackpad into a textile. <br>
+                        <a href="https://text-iles.glitch.me/">text-iles.glitch.me</a>
+                    </div>
+                </div>
+            </div>
+          
+                                          <!-- doubleweave -->
+            <div id="qolorquery" class="project-container">
+                <div class="project-media">
+                    <img src="https://cdn.glitch.global/87e3857f-bf61-486b-9901-9e6623928f8f/Screenshot%202025-05-11%20at%201.51.25%E2%80%AFPM.png?v=1746985889023" class="project-image" />
+                </div>
+                <div class="project-info">
+                    <div class="project-title">Qolor Query</div>
+                    <div class="project-description">
+                        2025<br>
+                      My goal was to create a system of creating color palettes at random. Using a survey of descriptors, I was able to gather data through this site and connect the backend to a Google spreadsheet. I then created a randomized generator informed by the values. <br>
+                        <a href="https://qolorquery.glitch.me/">qolorquery.glitch.me</a>
+                    </div>
+                </div>
+            </div>
+
+                                         <!-- doubleweave -->
+            <div id="abbeysdyelab" class="project-container">
+                <div class="project-media">
+                    <img src="https://cdn.glitch.global/87e3857f-bf61-486b-9901-9e6623928f8f/Screenshot%202025-05-11%20at%201.54.24%E2%80%AFPM.png?v=1746986068570" class="project-image" />
+                </div>
+                <div class="project-info">
+                    <div class="project-title">Abbey's Dye Lab</div>
+                    <div class="project-description">
+                        2023-2024<br>
+                      Natural dye research in collaboration with Clara Peterson and Ashna Reddy under the instruction of Lyza Baum. Majority of the dyes have been forage/grown in conjunction with the RISD Regenerative Earth Collective.  <br>
+                        <a href="https://abbeysdyelab.glitch.me/">abbeysdyelab.glitch.me</a>
+                    </div>
+                </div>
+            </div>
+          
+            <!-- woven touch -->
+            <div id="woventouch" class="project-container">
+                <div class="project-media">
+                    <video class="project-video" autoplay muted controls controlslist="nofullscreen">
+                        <source src="https://cdn.glitch.me/ad79606c-ca4b-4e29-a2c6-e8af09594931/WovenTouch.MOV?v=1729389045328" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="project-info">
+                    <div class="project-title">Woven Touch</div>
+                    <div class="project-description">
+                        2023<br>
+                        double-weave, capacitive sensors, Arduino, custom p5.js GUI<br>
+                        Using copper tape to create capacitive sensors, I was able to use the block double-weave technique to create pockets and insert sensors. With a custon GUI created in p5.js, users can interact and create visuals in response to touch.<br>
+                    </div>
+                </div>
+            </div>
+          
+           <!-- knitputer -->
+            <div id="knitputer" class="project-container">
+                <div class="project-media">
+                    <video class="project-video" autoplay muted controls controlslist="nofullscreen">
+                        <source src="https://cdn.glitch.me/ad79606c-ca4b-4e29-a2c6-e8af09594931/ScreenRecording_12-08-2024%2023-16-54_1.mov?v=1734643863362" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="project-info">
+                    <div class="project-title">Knitputer</div>
+                    <div class="project-description">
+                        2024<br>
+                        industrially knit wool, capacitive sensors, Arduino, custom p5.js GUI<br>
+                        Textiles and writing are both technologies that have existed throughout human history. Both aiding in the ways we communicate our care and love for eachother. When both mediums became digitized, strange and clunky solutions were created to address the uniquely tactile methods of creation. With this project I wanted to address the QWERTY keyboard and the M1 Stoll Industrial knit program and how they recreate and readdress what we understand as messaging through text and textiles.<br>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <!-- Project 4: Autoplay Video Example -->
+            <div id="project4" class="project-container">
+                <div class="project-media">
+                    <video class="project-video" autoplay muted loop>
+                        <source src="your-video.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="project-info">
+                    <div class="project-title">The Goal Is To Live</div>
+                    <div class="project-description">
+                        2019<br>
+                        Single-channel looping video, 1 hr. 20 min.<br>
+                        Feature length film made of sequenced clips from "How It's Made"
+                    </div>
+                </div>
+            </div>
+
+
+
+            <!-- You can add more projects here with different media types -->
+            <div id="project6" class="project-container">
+                <div class="project-media">
+                    <img src="/api/placeholder/700/700" alt="Reflects" class="project-image" />
+                </div>
+                <div class="project-info">
+                    <div class="project-title">Reflects</div>
+                    <div class="project-description">
+                        2018<br>
+                        Four-part harmony for browser windows with accompanying animation
+                    </div>
+                </div>
+            </div>
+
+            <div id="project7" class="project-container">
+                <div class="project-media">
+                    <img src="/api/placeholder/800/600" alt="No No No No No" class="project-image" />
+                </div>
+                <div class="project-info">
+                    <div class="project-title">No No No No No</div>
+                    <div class="project-description">
+                        2016<br>
+                        Animated GIFs made from cartoons displayed in/on various objects
+                    </div>
+                </div>
+            </div>
+
+            <div id="project8" class="project-container">
+                <div class="project-media">
+                    <img src="/api/placeholder/800/400" alt="Cloud Formations" class="project-image" />
+                </div>
+                <div class="project-info">
+                    <div class="project-title">Cloud Formations</div>
+                    <div class="project-description">
+                        2013 - 2015<br>
+                        Animated GIFs made from smeared film credits
+                    </div>
+                </div>
+            </div>
+
+            <div id="project9" class="project-container">
+                <div class="project-media">
+                    <img src="/api/placeholder/600/400" alt="Go Outside" class="project-image" />
+                </div>
+                <div class="project-info">
+                    <div class="project-title">Go Outside</div>
+                    <div class="project-description">
+                        2015<br>
+                        Series of looping found images set to alter to match the color temperature of current daylight
+                    </div>
+                </div>
+            </div>
+
+            <div id="project10" class="project-container">
+                <div class="project-media">
+                    <video class="project-video" controls>
+                        <source src="colors-movie.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="project-info">
+                    <div class="project-title">Colors Movie</div>
+                    <div class="project-description">
+                        2013<br>
+                        Single-channel video, 7 min.<br>
+                        Found YouTube fetish videos
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p><span id="datetime"></span> ~ <a href="mailto:abbeyforemana@gmail.com">Email me</a> ~ <a href="#bio">My bio</a></p>
+    </div>
+
+    <script>
+        function showProject(projectId, linkElement) {
+            // Hide welcome message
+            document.getElementById('welcome-message').style.display = 'none';
+            
+            // Hide all projects
+            document.querySelectorAll('.project-container').forEach(container => {
+                container.classList.remove('active');
+            });
+            
+            // Show selected project
+            const selectedProject = document.getElementById(projectId);
+            if (selectedProject) {
+                selectedProject.classList.add('active');
+            }
+            
+            // Update active link
+            document.querySelectorAll('.project-link').forEach(link => {
+                link.classList.remove('active');
+            });
+            linkElement.classList.add('active');
+            
+            // Update URL
+            window.location.hash = projectId;
+            
+            // Prevent default link behavior
+            return false;
+        }
+
+        // Handle direct URL access with hash
+        window.addEventListener('load', function() {
+            if (window.location.hash) {
+                const projectId = window.location.hash.substring(1);
+                const link = document.querySelector(`[href="#${projectId}"]`);
+                if (link && document.getElementById(projectId)) {
+                    showProject(projectId, link);
+                }
+            }
+        });
+      
+      // Date display
+function updateDate() {
+    const now = new Date();
+    
+    // Get day, month, year
+    const day = now.getDate();
+    const month = now.toLocaleString('default', { month: 'long' });
+    const year = now.getFullYear();
+    
+    // Add ordinal suffix to day
+    function getOrdinalSuffix(day) {
+        if (day > 3 && day < 21) return 'th';
+        switch (day % 10) {
+            case 1: return 'st';
+            case 2: return 'nd';
+            case 3: return 'rd';
+            default: return 'th';
+        }
+    }
+    
+    // Format the date
+    const formattedDate = `${month} ${day}${getOrdinalSuffix(day)}, ${year}`;
+    
+    // Update the display
+    document.querySelector('#datetime').textContent = formattedDate;
+}
+
+// Call the function once to display the date
+updateDate();
+
+// Optional: Update every day at midnight
+// setInterval(updateDate, 86400000);
+    </script>
+</body>
+</html>
